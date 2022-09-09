@@ -72,7 +72,7 @@ parser.add_argument('--skip', help='don\'t ask to continue',
                     dest='skip', action='store_true')
 parser.add_argument('--skip-dom', help='skip dom checking',
                     dest='skipDOM', action='store_true')
-parser.add_argument('--blind', help='inject blind XSS payload while crawling',
+parser.add_argument('--blind', help='inject blind XSS payload while crawling (set the payload/s in core/config.py)',
                     dest='blindXSS', action='store_true')
 parser.add_argument('--console-log-level', help='Console logging level',
                     dest='console_log_level', default=core.log.console_log_level,
