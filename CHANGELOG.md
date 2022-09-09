@@ -2,6 +2,7 @@
 - Added scanning and brute-forcing of multiple targets
 - Scanned targets now have a summary output
 - Stop scanning if the "skip" parameter is provided
+- Add request parameters as sources for the DOM-based XSS checker
 
 ### 3.1.5
 - Fix color bug that resulted in DOM XSS vulnerabilities not
