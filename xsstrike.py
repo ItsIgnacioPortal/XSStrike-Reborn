@@ -82,6 +82,7 @@ parser.add_argument('--file-log-level', help='File logging level', dest='file_lo
 parser.add_argument('--log-file', help='Name of the file to log', dest='log_file',
                     default=core.log.log_file)
 parser.add_argument('--js', '--javascript', help='render javascript', dest='js', action='store_true')
+parser.add_argument('--save-payloads', dest="payloads_file", help='Save generated payloads to a file', default='/path/to/file')
 args = parser.parse_args()
 
 # Pull all parameter values of dict from argparse namespace into local variables of name == key
@@ -107,6 +108,7 @@ delay = args.delay
 skip = args.skip
 skipDOM = args.skipDOM
 blindXSS = args.blindXSS
+payloads_file = args.payloads_file
 core.log.console_log_level = args.console_log_level
 core.log.file_log_level = args.file_log_level
 core.log.log_file = args.log_file
@@ -178,6 +180,7 @@ if not target_list and not args_seeds:  # if the user hasn't supplied a url
 if fuzz:
     singleFuzz(target, paramData, encoding, headers, delay, timeout)
 elif not recursive and not args_seeds:
+<<<<<<< HEAD
     results = []
     for i, target in enumerate(target_list):
         logger.red_line()
@@ -195,6 +198,12 @@ elif not recursive and not args_seeds:
         logger.info(f'Vulnerable   {len(results)} target{"s"[:len(results)^1]}')
         for i, result in enumerate(results):
             logger.good(f'Pwned        {result[0]} ({result[1]})')
+=======
+    if args_file:
+        bruteforcer(target, paramData, payloadList, encoding, headers, delay, timeout)
+    else:
+        scan(target, paramData, encoding, headers, delay, timeout, skipDOM, find, skip, payloads_file)
+>>>>>>> 86cb5d09968e36447160527b3c318a630eebf3fe
 else:
     if target:
         seedList.append(target)
