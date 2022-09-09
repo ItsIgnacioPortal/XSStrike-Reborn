@@ -4,6 +4,9 @@
 - ✨ Better `--skip` support
 - ✨ Automatically request parameters as sources for the DOM-based XSS checker.
 - ✨ Detect XSS on applications that need javascript to be vulnerable
+- ✨ Use multiple Blind XSS payloads by setting them as a tuple in `core/config.py`
+- ✨ Save generated XSS payloads to a file by using `--write-payloads /path/to/file`
+
 
 ### 3.1.5
 - Fix color bug that resulted in DOM XSS vulnerabilities not
