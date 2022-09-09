@@ -2,7 +2,12 @@ changes = '''Negligible DOM XSS false positives;x10 faster crawling'''
 globalVariables = {}  # it holds variables during runtime for collaboration across modules
 
 defaultEditor = 'nano'
-blindPayload = ''  # your blind XSS payload
+
+# your blind XSS payload
+# You can also use a tuple, like this: 
+#blindPayload = ('gfg', 'is', 'best')
+blindPayload = '' 
+
 xsschecker = 'v3dm0s'  # A non malicious string to check for reflections and stuff
 
 #  More information on adding proxies: http://docs.python-requests.org/en/master/user/advanced/#proxies
