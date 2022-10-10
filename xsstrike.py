@@ -180,7 +180,7 @@ if not target_list and not args_seeds:  # if the user hasn't supplied a url
 if fuzz:
     singleFuzz(target, paramData, encoding, headers, delay, timeout)
 elif not recursive and not args_seeds:
-<<<<<<< HEAD
+
     results = []
     for i, target in enumerate(target_list):
         logger.red_line()
@@ -198,12 +198,12 @@ elif not recursive and not args_seeds:
         logger.info(f'Vulnerable   {len(results)} target{"s"[:len(results)^1]}')
         for i, result in enumerate(results):
             logger.good(f'Pwned        {result[0]} ({result[1]})')
-=======
+
     if args_file:
         bruteforcer(target, paramData, payloadList, encoding, headers, delay, timeout)
     else:
         scan(target, paramData, encoding, headers, delay, timeout, skipDOM, find, skip, payloads_file)
->>>>>>> 86cb5d09968e36447160527b3c318a630eebf3fe
+
 else:
     if target:
         seedList.append(target)
