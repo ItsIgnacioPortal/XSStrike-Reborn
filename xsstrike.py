@@ -39,7 +39,7 @@ import core.log
 # Processing command line arguments, where dest var names will be mapped to local vars with the same name
 parser = argparse.ArgumentParser()
 parser.add_argument('-u', '--url', help='url', dest='target')
-parser.add_argument('-ul', '--url_list', help='path to a file of URLs', dest='/path/to/targets-file')
+parser.add_argument('-ul', '--url_list', help='path to a file of URLs', dest='targets')
 parser.add_argument('--data', help='post data', dest='paramData')
 parser.add_argument('-e', '--encode', help='encode payloads', dest='encode')
 parser.add_argument('--fuzzer', help='fuzzer',
@@ -82,7 +82,7 @@ parser.add_argument('--file-log-level', help='File logging level', dest='file_lo
 parser.add_argument('--log-file', help='Name of the file to log', dest='log_file',
                     default=core.log.log_file)
 parser.add_argument('--js', '--javascript', help='render javascript', dest='js', action='store_true')
-parser.add_argument('--save-payloads', dest="payloads_file", help='Save generated payloads to a file', default='/path/to/file')
+parser.add_argument('--save-payloads', dest="payloads_file", help='Save generated payloads to a file')
 args = parser.parse_args()
 
 # Pull all parameter values of dict from argparse namespace into local variables of name == key
@@ -180,7 +180,7 @@ if not target_list and not args_seeds:  # if the user hasn't supplied a url
 if fuzz:
     singleFuzz(target, paramData, encoding, headers, delay, timeout)
 elif not recursive and not args_seeds:
-<<<<<<< HEAD
+
     results = []
     for i, target in enumerate(target_list):
         logger.red_line()
@@ -188,7 +188,7 @@ elif not recursive and not args_seeds:
         if args_file:
             bruteforcer(target, paramData, payloadList, encoding, headers, delay, timeout)
         else:
-            result = scan(target, paramData, encoding, headers, delay, timeout, skipDOM, skip)
+            result = scan(target, paramData, encoding, headers, delay, timeout, skipDOM, skip, payloads_file)
             results.append(result) if result else 'The target is not vulnerable!'
 
     if results:
@@ -198,12 +198,7 @@ elif not recursive and not args_seeds:
         logger.info(f'Vulnerable   {len(results)} target{"s"[:len(results)^1]}')
         for i, result in enumerate(results):
             logger.good(f'Pwned        {result[0]} ({result[1]})')
-=======
-    if args_file:
-        bruteforcer(target, paramData, payloadList, encoding, headers, delay, timeout)
-    else:
-        scan(target, paramData, encoding, headers, delay, timeout, skipDOM, find, skip, payloads_file)
->>>>>>> 86cb5d09968e36447160527b3c318a630eebf3fe
+
 else:
     if target:
         seedList.append(target)

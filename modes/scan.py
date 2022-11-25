@@ -26,7 +26,7 @@ def write_vectors(vectors, filename):
     logger.info('Written payloads to file')
 
 
-def scan(target, paramData, encoding, headers, delay, timeout, skipDOM, find, skip, payloads_file):
+def scan(target, paramData, encoding, headers, delay, timeout, skipDOM, skip, payloads_file, find=""):
     GET, POST = (False, True) if paramData else (True, False)
     # If the user hasn't supplied the root url with http(s), we will handle it
     if not target.startswith('http'):
@@ -94,6 +94,7 @@ def scan(target, paramData, encoding, headers, delay, timeout, skipDOM, find, sk
             logger.error('No vectors were crafted.')
             continue
         logger.info('Payloads generated: %i' % total)
+        logger.debug(f'payload_file: {payloads_file}')
         if payloads_file:
             write_vectors(vectors, payloads_file)
         progress = 0
