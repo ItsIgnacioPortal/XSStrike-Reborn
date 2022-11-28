@@ -40,7 +40,7 @@ def photon(seedUrl, headers, level, threadCount, delay, timeout, skipDOM):
         response = requester(url, params, headers, True, delay, timeout).text
         retireJs(url, response)
         if not skipDOM:
-            highlighted = dom(response)
+            highlighted = dom(response, params.keys() if params else [])
             clean_highlighted = ''.join([re.sub(r'^\d+\s+', '', line) for line in highlighted])
             if highlighted and clean_highlighted not in checkedDOMs:
                 checkedDOMs.append(clean_highlighted)
