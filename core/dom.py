@@ -14,7 +14,6 @@ def dom(response, params):
     for script in scripts:
         script = script.split('\n')
         num = 1
-        allControlledVariables = set()
         try:
             for newLine in script:
                 line = newLine
